@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibaixiong.bbs.dao.BbsFormDao" >
+  <resultMap id="BaseResultMap" type="com.ibaixiong.entity.BbsForm" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="tab" property="tab" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP" />
+    <result column="available" property="available" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+	<result column="url" property="url" jdbcType="VARCHAR" />
+	<result column="thum_Url" property="thumUrl" jdbcType="VARCHAR" />
+	<result column="permissions_tag" property="permissionsTag" jdbcType="VARCHAR" />
+	<result column="head_title" property="headTitle" jdbcType="VARCHAR" />
+    <result column="head_desc" property="headDesc" jdbcType="VARCHAR" />
+    <result column="head_kewords" property="headKewords" jdbcType="VARCHAR" />
+    <result column="display_type" property="displayType" jdbcType="VARCHAR" />
+    <association column="parent_id" property="parentForm" select="com.ibaixiong.bbs.dao.BbsFormDao.selectByPrimaryKey"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, tab, parent_id, description, sort, create_date_time, available, status,url,thum_Url,
+    permissions_tag, head_title, head_desc, head_kewords, display_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_form
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="getFormByParentId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_form
+    where status=1 and parent_id = #{parentId,jdbcType=BIGINT} order by sort asc
+  </select>
+  <select id="queryAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_form
+  </select>
+  <select id="getFormByPerTag" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_form
+    where permissions_tag = #{perTag,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_bbs_form
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.ibaixiong.entity.BbsForm" >
+    insert into tbl_bbs_form
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="tab != null" >
+        tab,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time,
+      </if>
+      <if test="available != null" >
+        available,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="thumUrl != null" >
+        thum_Url,
+      </if>
+      <if test="permissionsTag != null" >
+        permissions_tag,
+      </if>
+      <if test="headTitle != null" >
+        head_title,
+      </if>
+      <if test="headDesc != null" >
+        head_desc,
+      </if>
+      <if test="headKewords != null" >
+        head_kewords,
+      </if>
+      <if test="displayType != null" >
+        display_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tab != null" >
+        #{tab,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="available != null" >
+        #{available,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="thumUrl != null" >
+        #{thumUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionsTag != null" >
+        #{permissionsTag,jdbcType=VARCHAR},
+      </if>
+      <if test="headTitle != null" >
+        #{headTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="headDesc != null" >
+        #{headDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="headKewords != null" >
+        #{headKewords,jdbcType=VARCHAR},
+      </if>
+      <if test="displayType != null" >
+        #{displayType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibaixiong.entity.BbsForm" >
+    update tbl_bbs_form
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tab != null" >
+        tab = #{tab,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time = #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="available != null" >
+        available = #{available,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="thumUrl != null" >
+        thum_Url = #{thumUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionsTag != null" >
+        permissions_tag = #{permissionsTag,jdbcType=VARCHAR},
+      </if>
+      <if test="headTitle != null" >
+        head_title = #{headTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="headDesc != null" >
+        head_desc = #{headDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="headKewords != null" >
+        head_kewords = #{headKewords,jdbcType=VARCHAR},
+      </if>
+      <if test="displayType != null" >
+        display_type = #{displayType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

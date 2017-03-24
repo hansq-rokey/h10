@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibaixiong.user.dao.BbsPermissionsDao" >
+  <resultMap id="BaseResultMap" type="com.ibaixiong.entity.BbsPermissions" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="form_id" property="formId" jdbcType="BIGINT" />
+    <result column="operate_id" property="operateId" jdbcType="BIGINT" />
+    <result column="per_oper" property="perOper" jdbcType="VARCHAR" />
+    <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, form_id, operate_id, per_oper, create_date_time, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_permissions
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_bbs_permissions
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ibaixiong.entity.BbsPermissions" >
+    insert into tbl_bbs_permissions (id, form_id, operate_id, 
+      per_oper, create_date_time, status
+      )
+    values (#{id,jdbcType=BIGINT}, #{formId,jdbcType=BIGINT}, #{operateId,jdbcType=BIGINT}, 
+      #{perOper,jdbcType=VARCHAR}, #{createDateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ibaixiong.entity.BbsPermissions" >
+    insert into tbl_bbs_permissions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="formId != null" >
+        form_id,
+      </if>
+      <if test="operateId != null" >
+        operate_id,
+      </if>
+      <if test="perOper != null" >
+        per_oper,
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="formId != null" >
+        #{formId,jdbcType=BIGINT},
+      </if>
+      <if test="operateId != null" >
+        #{operateId,jdbcType=BIGINT},
+      </if>
+      <if test="perOper != null" >
+        #{perOper,jdbcType=VARCHAR},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibaixiong.entity.BbsPermissions" >
+    update tbl_bbs_permissions
+    <set >
+      <if test="formId != null" >
+        form_id = #{formId,jdbcType=BIGINT},
+      </if>
+      <if test="operateId != null" >
+        operate_id = #{operateId,jdbcType=BIGINT},
+      </if>
+      <if test="perOper != null" >
+        per_oper = #{perOper,jdbcType=VARCHAR},
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time = #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ibaixiong.entity.BbsPermissions" >
+    update tbl_bbs_permissions
+    set form_id = #{formId,jdbcType=BIGINT},
+      operate_id = #{operateId,jdbcType=BIGINT},
+      per_oper = #{perOper,jdbcType=VARCHAR},
+      create_date_time = #{createDateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

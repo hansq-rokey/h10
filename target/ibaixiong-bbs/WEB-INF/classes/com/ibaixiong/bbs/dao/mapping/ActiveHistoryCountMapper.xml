@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibaixiong.bbs.dao.ActiveHistoryCountDao" >
+  <resultMap id="BaseResultMap" type="com.ibaixiong.entity.ActiveHistoryCount" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="active_num" property="activeNum" jdbcType="INTEGER" />
+    <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <association column="user_id" property="user" select="com.ibaixiong.bbs.dao.UserDao.selectByPrimaryKey"/>
+    <association column="form_id" property="form" select="com.ibaixiong.bbs.dao.BbsFormDao.selectByPrimaryKey"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, create_date_time, status,form_id,active_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_active_history_count
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="getByUserAndForm" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_active_history_count
+    where user_id = #{userId,jdbcType=BIGINT} and form_id = #{formId,jdbcType=BIGINT}
+  </select>
+ <select id="getActiveUserByFormId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_active_history_count where form_id = #{formId,jdbcType=BIGINT} order by active_num DESC LIMIT 0,5
+  </select>
+  <resultMap id="BaseResultMap1" type="com.ibaixiong.entity.ActiveHistoryCount" >
+    <result column="active_num" property="activeNum" jdbcType="INTEGER" />
+    <association column="user_id" property="user" select="com.ibaixiong.bbs.dao.UserDao.selectByPrimaryKey"/>
+  </resultMap>
+  <select id="getActiveUserByFormIds" resultMap="BaseResultMap1" parameterType="java.util.List" >
+    select user_id,sum(active_num) active_num from tbl_active_history_count where form_id in 
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+		#{item}
+	</foreach>
+	GROUP BY user_id ORDER BY active_num desc LIMIT 0,5
+  </select>
+  <insert id="insertSelective" parameterType="com.ibaixiong.entity.ActiveHistoryCount" useGeneratedKeys="true" keyProperty="id">
+    insert into tbl_active_history_count
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="form != null" >
+        form_id,
+      </if>
+      <if test="activeNum != null" >
+        active_num,
+      </if>
+      <if test="user != null" >
+        user_id,
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="form != null" >
+        #{form.id,jdbcType=BIGINT},
+      </if>
+      <if test="activeNum != null" >
+        #{activeNum,jdbcType=INTEGER},
+      </if>
+      <if test="user != null" >
+        #{user.id,jdbcType=BIGINT},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibaixiong.entity.ActiveHistoryCount" >
+    update tbl_active_history_count
+    <set >
+      <if test="form != null" >
+        form_id = #{form.id,jdbcType=BIGINT},
+      </if>
+      <if test="activeNum != null" >
+        active_num = #{activeNum,jdbcType=INTEGER},
+      </if>
+      <if test="user != null" >
+        user_id = #{user.id,jdbcType=BIGINT},
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time = #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

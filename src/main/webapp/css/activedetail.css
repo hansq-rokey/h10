@@ -1,0 +1,215 @@
+/*�����ҳ*/
+.row{
+	margin:0;
+}
+.content-right{
+    margin-top:0;
+}
+.content-detail{
+    width: 905px;
+    background: #fff;
+    position: relative;
+    padding:20px 42px 77px;
+    margin-bottom:25px;
+}
+.content-detail div div{
+    padding:0;
+}
+.content-detail div div.sharebox{
+    padding-left:20px;
+}
+.userinfor{
+    padding-bottom:8px;
+}
+.userimg{
+    width: 80px;
+    height:80px;
+    margin-top:16px;
+    border-radius:0px;
+}
+.userhome{
+    width: 74px;
+    height:28px;
+    border:none;
+    line-height:28px;
+    color:#fff;
+    background:#ff6200;
+    margin-top:18px;
+}
+.activetitle{
+    width: 700px;
+    font-size:22px;
+    color:#333;
+    float: left;
+    line-height:32px;
+    height:32px;
+    overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.signbtn{
+    float: right;
+    width: 95px;
+    height:38px;
+    background: #ff6200;
+    color:#fff;
+    border:none;
+}
+.actdetail{
+    width: 822px;
+    height:412px;
+    margin-top:10px;
+}
+.articletext{
+    text-indent: 2em;
+    line-height:25px;
+    font-size:14px;
+}
+.applyrow{
+    background: #f2f2f2;
+    padding:13px 0;
+    margin-top:25px;
+}
+.applyimg{
+    float: left;
+    width: 31px;
+    height:31px;
+    border-radius: 50%;
+    margin-left:36px;
+    margin-top:4px;
+}
+.applytext{
+    height:38px;
+    margin-left:22px;
+    border:none;
+    float: left;
+    width: 590px;
+}
+.applybtn{
+    float: left;
+    width: 95px;
+    height:38px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: #32a5e7;
+    color:#fff;
+    margin-left:10px;
+    border:none;
+}
+.floor{
+    float: right;
+    font-size:12px;
+}
+.bluetext{
+    color:#32a5e7;
+}
+.replytext{
+    height:40px;
+    line-height:20px;
+    overflow: hidden;
+    width: 100%;
+    word-warp:break-word;
+}
+.praiseitem:hover{
+    color:#ff6200;
+}
+.praiseitem:hover i.praise{
+    background-position: -12px -133px;
+}
+.replyimg{
+    width: 50px;
+    height:50px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    margin-top:10px;
+}
+.cllist{
+    padding-right:37px;
+    padding-left:45px;
+    background: #fff;
+    margin-bottom:15px;
+}
+.cllist li{
+    border-top:1px solid #f2f2f2;
+    padding:14px 0;
+}
+.cllist li  div div.col-xs-1{
+     width: 50px;
+     padding:0;
+ }
+.cllist li  div div.col-xs-11{
+    width: 755px;
+    padding:0;
+}
+.cllist li  div div div div{
+    padding-right:0;
+}
+.secondreply{
+    background:#f2f2f2;
+    margin-bottom:15px;
+    padding-bottom:10px;
+}
+.secondreplyimg{
+    width: 24px;
+    height:24px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    margin-right:4px;
+}
+.secondreplyname{
+    margin-right:10px;
+}
+.secondreply p.replytext{
+    padding-left:16px;
+    padding-right:20px;
+}
+.secondreply p.replytext::after {
+    content:"...";
+    font-weight:bold;
+    position:absolute;
+    bottom:10px;
+    right:13px;
+    padding:0 -5px 1px 5px;
+    background:url(http://fe.ibaixiong.com/bbs/image/ellipsis_bg.png) repeat-y 15px 0;
+}
+/*���ӻظ�*/
+.content-bottom{
+    background: #fff;
+}
+.content-bottom div{
+    padding:0;
+    margin: 0 auto;
+}
+.replytop{
+    height:44px;
+    line-height:44px;
+    font-size:14px;
+    color:#333;
+    text-indent: 15px;
+}
+.textcount{
+    margin-left:40px;
+}
+.publishreply{
+    width: 108px;
+    height:38px;
+    background: #ff6200;
+    color:#fff;
+    border:none;
+    float: right;
+    margin-right:40px;
+    margin-bottom:39px;
+    margin-top:10px;
+}
+.bluetext:hover{
+	color:#32a5e7;
+}
+.iconlist a:hover{
+	color:#ff6200;
+}
+.iconlist a{
+	font-size:12px;
+}

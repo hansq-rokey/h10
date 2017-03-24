@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibaixiong.bbs.dao.BbsCollectionDao" >
+  <resultMap id="BaseResultMap" type="com.ibaixiong.entity.BbsCollection" >
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="article_id" property="articleId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_date_time, article_id, user_id 
+  </sql>
+  <select id="checkCollectionByArticleUser" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_collection
+    where article_id = #{articleId,jdbcType=BIGINT} and user_id=#{userId,jdbcType=BIGINT}
+  </select>
+  <insert id="insertSelective" parameterType="com.ibaixiong.entity.BbsCollection" useGeneratedKeys="true" keyProperty="id">
+    insert into tbl_bbs_collection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        article_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <delete id="remove">
+  	 delete from tbl_bbs_collection where article_id = #{articleId,jdbcType=BIGINT} and user_id=#{userId,jdbcType=BIGINT}
+  </delete>
+</mapper>

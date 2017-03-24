@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibaixiong.bbs.dao.BbsFormArticleDao" >
+  <resultMap id="BaseResultMap" type="com.ibaixiong.entity.BbsFormArticle" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="form_id" property="formId" jdbcType="BIGINT" />
+    <result column="article_id" property="articleId" jdbcType="BIGINT" />
+    <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, form_id, article_id, create_date_time, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_form_article
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_bbs_form_article
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteFormArticleByArticleId" parameterType="java.lang.Long" >
+    delete from tbl_bbs_form_article
+    where article_id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ibaixiong.entity.BbsFormArticle" >
+    insert into tbl_bbs_form_article (id, form_id, article_id, 
+      create_date_time, status)
+    values (#{id,jdbcType=BIGINT}, #{formId,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, 
+      #{createDateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ibaixiong.entity.BbsFormArticle" useGeneratedKeys="true" keyProperty="id">
+    insert into tbl_bbs_form_article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="formId != null" >
+        form_id,
+      </if>
+      <if test="articleId != null" >
+        article_id,
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="formId != null" >
+        #{formId,jdbcType=BIGINT},
+      </if>
+      <if test="articleId != null" >
+        #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibaixiong.entity.BbsFormArticle" >
+    update tbl_bbs_form_article
+    <set >
+      <if test="formId != null" >
+        form_id = #{formId,jdbcType=BIGINT},
+      </if>
+      <if test="articleId != null" >
+        article_id = #{articleId,jdbcType=BIGINT},
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time = #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ibaixiong.entity.BbsFormArticle" >
+    update tbl_bbs_form_article
+    set form_id = #{formId,jdbcType=BIGINT},
+      article_id = #{articleId,jdbcType=BIGINT},
+      create_date_time = #{createDateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

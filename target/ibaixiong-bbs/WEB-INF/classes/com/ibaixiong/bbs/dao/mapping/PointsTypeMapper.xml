@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibaixiong.bbs.dao.PointsTypeDao" >
+  <resultMap id="BaseResultMap" type="com.ibaixiong.entity.PointsType" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="points_name" property="pointsName" jdbcType="VARCHAR" />
+    <result column="tag_name" property="tagName" jdbcType="VARCHAR" />
+    <result column="points_num" property="pointsNum" jdbcType="INTEGER" />
+    <result column="exp_num" property="expNum" jdbcType="INTEGER" />
+    <result column="active_num" property="activeNum" jdbcType="INTEGER" />
+    <result column="op_Counts" property="opCounts" jdbcType="INTEGER" />
+    <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, points_name, points_num, create_date_time, status,exp_num,active_num,op_Counts,tag_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_points_type
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="getAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_points_type
+    where status = 1
+  </select>
+  <select id="getPointsTypeByTagName" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_points_type
+    where status = 1 and tag_name =  #{tagName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_points_type
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <insert id="insertSelective" parameterType="com.ibaixiong.entity.PointsType" >
+    insert into tbl_points_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pointsName != null" >
+        points_name,
+      </if>
+      <if test="pointsNum != null" >
+        points_num,
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="tagName != null" >
+        tag_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="pointsName != null" >
+        #{pointsName,jdbcType=VARCHAR},
+      </if>
+      <if test="pointsNum != null" >
+        #{pointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="tagName != null" >
+        #{tagName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibaixiong.entity.PointsType" >
+    update tbl_points_type
+    <set >
+      <if test="pointsName != null" >
+        points_name = #{pointsName,jdbcType=VARCHAR},
+      </if>
+      <if test="pointsNum != null" >
+        points_num = #{pointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time = #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="tagName != null" >
+        tag_name =  #{tagName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

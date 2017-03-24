@@ -1,0 +1,32 @@
+.banner{
+    width: 1200px;
+    height:428px;
+    margin:0 auto;
+    margin-top:70px;
+}
+.prev{
+    left:50%;
+    margin-left:-600px;
+}
+.next{
+    right:50%;
+    margin-right:-600px;
+}
+.content{
+    margin-top:15px;
+}
+.cllist,.content-right{
+    margin-top:0;
+}
+.title{
+    line-height:32px;
+}
+.publishbtn{
+    width: 274px;
+    height:55px;
+    background:#32A5E7;
+    color:#fff;
+    font-size:24px;
+    border:none;
+    margin-bottom:15px;
+}

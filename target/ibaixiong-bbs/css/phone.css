@@ -1,0 +1,80 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins,
+kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time,
+mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 14rem;
+    font-family: "Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei","΢���ź�",Arial,sans-serif;
+	box-sizing:border-box;
+}
+body,html{
+	width:100%;
+	font-size:6.25%;
+}
+.content{
+	width:100%;
+	padding:20px;
+	overflow:hidden;
+}
+.activetitle{
+    width:100%;
+    font-size:19rem;
+    color:#333;
+    line-height:32px;
+    overflow: hidden;
+	margin-bottom:19px;
+}
+.smallsize{
+	font-size:12rem;
+}
+.light{
+	color:#a0a0a0;
+}
+.darker{
+	color:#333333;
+	font-size:12rem;
+	margin: 0 16px 0 8px;
+}
+.imgbox{
+	margin-top:22px;
+	margin-bottom:22px;
+	width:100%;
+}
+.imgbox img{
+	max-width:100%;
+	height:auto;
+}
+.articletext{
+    text-indent: 2em;
+    line-height:30px;
+    font-size:14rem;
+	color:#666;
+}
+.iconlist i.icon{
+    display: inline-block;
+    padding-left: 22px;
+    background-image:url(../image/icon_share.png);
+    background-repeat: no-repeat;
+    margin-left:10px;
+    width: 20px;
+}
+.iconlist{
+    position:relative;
+	display:inline-block;
+	margin-top:10px;
+}
+.read{
+    background-position: -10px -91px;
+    margin-right:4px;
+}
+.reply{
+    background-position: -52px -90px;
+}
+.icon{
+    display: inline-block;
+    width: 17px;
+    height:18px;
+    float: left;
+}

@@ -1,0 +1,267 @@
+.row{
+    padding:7px 0;
+}
+.content{
+    background:#fff;
+    padding:40px;
+    margin-top:100px;
+}
+.addtheme{
+    line-height:32px;
+    font-size:18px;
+}
+.option{
+    width: 140px;
+    position: absolute;
+    left:0px;
+    top:51px;
+    background:#fff;
+    border:1px solid #dcdcdc;
+    z-index: 9999;
+    display: none;
+}
+.option li:hover{
+    background: #f2f2f2;
+    color:#ff6200;
+}
+.arrowtop{
+    width: 5px;
+    height:4px;
+    background: url("http://fe.ibaixiong.com/bbs/image/bbsicon.png") no-repeat -189px -6px;
+    display: inline-block;
+    position: absolute;
+    left:50%;
+    top:-4px;
+    z-index: 9999;
+}
+.arrowright{
+    width: 6px;
+    height:6px;
+    background: url("http://fe.ibaixiong.com/bbs/image/bbsicon.png") no-repeat -58px -138px;
+    display: inline-block;
+    position: absolute;
+    right:9px;
+    bottom:13px;
+    z-index: 9999;
+}
+.title,.plate,.classfiy,.grade,.datetimepicker{
+    width: 530px;
+    height:42px;
+    border:1px solid #dcdcdc;
+    padding:5px;
+    float: left;
+}
+.plate,.classfiy,.grade{
+    width: 140px;
+    margin-left:20px;
+}
+
+.selectinput{
+    width: 140px;
+    height:44px;
+    border:1px solid #dcdcdc;
+    padding-left:14px;
+    display: inline-block;
+    float: left;
+    position: relative;
+    line-height:34px;
+    margin:0 10px;
+    cursor: pointer;
+    color:#a9a9a9;
+}
+.grade{
+    margin-left:0;
+    margin-right:10px;
+}
+.datetimepicker{
+    width: 200px;
+    float: none;
+    margin-left: 10px;
+}
+.publish{
+    background:#ff6200;
+    color:#fff;
+    float: right;
+    border:none;
+    width: 140px;
+    height:40px;
+}
+.username{
+    width: 58px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    display: inline-block;
+}
+.userimg{
+    width: 30px;
+    height:30px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border:none;
+    margin-top:-60px;
+}
+.summarize{
+    width: 100%;
+    height:100px;
+    border:1px solid #dcdcdc;
+    padding:5px;
+    padding-left:20px;
+}
+.remind{
+    position: absolute;
+    bottom:15px;
+    right:20px;
+    color:#999;
+}
+.number{
+    color:#666;
+    padding:0 5px;
+}
+.uploadbox{
+    display: inline-block;
+    width: 150px;
+    height:44px;
+    position: relative;
+    margin-left:12px;
+    float:left;
+}
+.uploadimg{
+    width: 70px;
+    height:24px;
+    background:#32a5e7;
+    color:#fff;
+    border:none;
+    margin-top:10px;
+}
+.popup{
+    height:100%;
+    position: fixed;
+    width: 100%;
+    top:0;
+    left:0;
+    display: none;
+    z-index: 1001;
+}
+.warnbg{
+    height:100%;
+    position: absolute;
+    width: 100%;
+    background:rgba(0,0,0,0.2);
+    background-color: #000;
+    opacity: 0.4;
+    filter:alpha(opacity=40);
+    top:0;
+    left:0;
+}
+.close{
+    width: 18px;
+    height:18px;
+    display: inline-block;
+    float: right;
+    background: url("http://fe.ibaixiong.com/bbs/image/icon.png") no-repeat -2px -142px;
+    margin-top:15px;
+    right:15px;
+}
+.warnpop{
+    width: 510px;
+    height:300px;
+    background: #fff;
+    padding:0 15px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left:-255px;
+    margin-top:-150px;
+}
+.warnpop div.col-xs-6{
+    line-height:53px;
+}
+.warnpop div.leftpart{
+    text-indent: 55px;
+}
+.warnpop div input[type=radio]{
+    margin-right:12px;
+    color:#dedede;
+    background:#fff;
+    width: 10px;
+    height:10px;
+}
+.wt{
+    height:50px;
+    line-height:50px;
+    border-bottom:1px solid #dcdcdc;
+    text-indent: 1em;
+    color:#333;
+}
+.finishbtn{
+    width: 70px;
+    height:30px;
+    color:#fff;
+    background:#ff6200;
+    margin-top:55px;
+    border:none;
+}
+.cancel{
+    background: #fff;
+    border:none;
+    margin-left:5px;
+}
+.nicktext{
+    width: 238px;
+    height:30px;
+    border:1px solid #dcdcdc;
+    margin-bottom:17px;
+    margin-top:40px;
+}
+.uploadImgBox{
+	width:870px;
+	height:300px;
+	text-align:center;
+	border:1px solid #dcdcdc;
+	background:url("http://fe.ibaixiong.com/bbs/image/uploadBg.png") center no-repeat;
+	position:relative;
+	z-index:96;
+}
+#file,.uploadImgBtn{
+	width:140px;
+	height:40px;
+	position:absolute;
+	top:190px;
+	left:365px;
+	z-index:99;
+	border:none;
+	cursor:pointer;
+}
+.uploadImgBtn{
+	background-image:url('http://fe.ibaixiong.com/bbs/image/uploadBtnBg.png');
+	background-position:center center;
+	background-repeat:no-repeat;
+	z-index:98;
+}
+#file{
+	opacity:0;
+}
+.blackBg{
+	width:870px;
+	height:300px;
+	background:#000;
+	opacity:0;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:97;
+	transition: all 0.8s;
+	-moz-transition: all 0.8s;	
+	-webkit-transition: all 0.8s;
+	-o-transition: all 0.8s;
+}
+.pasted{
+	opacity:0;
+}
+.uploadImgBox:hover .pasted{
+	opacity:1;
+}
+.uploadImgBox:hover .blackBg{
+	opacity:0.2;
+}

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibaixiong.bbs.dao.PointsHistoryDao" >
+  <resultMap id="BaseResultMap" type="com.ibaixiong.entity.PointsHistory" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="points_type" property="pointsType" jdbcType="BIGINT" />
+    <result column="points_name" property="pointsName" jdbcType="VARCHAR" />
+    <result column="points_num" property="pointsNum" jdbcType="INTEGER" />
+    <result column="exp_num" property="expNum" jdbcType="INTEGER" />
+    <result column="active_num" property="activeNum" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, points_type, points_name, points_num, user_id, create_date_time, status,exp_num,active_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_points_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="getPointsHistoryCount" resultType="java.lang.Integer" >
+    select count(*) from tbl_points_history where user_id= #{userId} and points_type=#{pointsType} 
+    and create_date_time &gt;= '${startDate}' and create_date_time &lt;= '${endDate}'
+  </select>
+  <select id="queryPointsHistoryGroupByUserId" resultMap="BaseResultMap">
+  	SELECT user_id,SUM(points_num) points_num,SUM(exp_num) exp_num,SUM(active_num) active_num from tbl_points_history WHERE TO_DAYS( NOW( ) ) - TO_DAYS( create_date_time) = 1 GROUP BY user_id
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_points_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.ibaixiong.entity.PointsHistory" useGeneratedKeys="true" keyProperty="id">
+    insert into tbl_points_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pointsType != null" >
+        points_type,
+      </if>
+      <if test="pointsName != null" >
+        points_name,
+      </if>
+      <if test="pointsNum != null" >
+        points_num,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="expNum != null" >
+        exp_num,
+      </if>
+      <if test="activeNum != null" >
+        active_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pointsType != null" >
+        #{pointsType,jdbcType=BIGINT},
+      </if>
+      <if test="pointsName != null" >
+        #{pointsName,jdbcType=VARCHAR},
+      </if>
+      <if test="pointsNum != null" >
+        #{pointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="expNum != null" >
+        #{expNum,jdbcType=INTEGER},
+      </if>
+      <if test="activeNum != null" >
+        #{activeNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibaixiong.entity.PointsHistory" >
+    update tbl_points_history
+    <set >
+      <if test="pointsType != null" >
+        points_type = #{pointsType,jdbcType=BIGINT},
+      </if>
+      <if test="pointsName != null" >
+        points_name = #{pointsName,jdbcType=VARCHAR},
+      </if>
+      <if test="pointsNum != null" >
+        points_num = #{pointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time = #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

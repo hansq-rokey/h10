@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibaixiong.bbs.dao.BbsReplyDao" >
+  <resultMap id="BaseResultMap" type="com.ibaixiong.entity.BbsReply" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="quote_id" property="quoteId" jdbcType="BIGINT" />
+    <result column="quote_user_nick" property="quoteUserNick" jdbcType="VARCHAR" />
+    <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="quote_avatar_img" property="quoteAvatarImg" jdbcType="VARCHAR" />
+    <result column="quote_create_date_time" property="quoteCreateDateTime" jdbcType="TIMESTAMP" />
+    <result column="readStatus" property="readStatus" jdbcType="TINYINT" />
+    <association column="user_id" property="user" select="com.ibaixiong.bbs.dao.UserDao.selectByPrimaryKey"/>
+    <association column="article_id" property="article" select="com.ibaixiong.bbs.dao.BbsArticleDao.selectByPrimaryKey"/>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ibaixiong.entity.BbsReply" extends="BaseResultMap" >
+    <result column="reply_content" property="replyContent" jdbcType="LONGVARCHAR" />
+    <result column="quote_content" property="quoteContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, article_id, quote_id, quote_user_nick, 
+    create_date_time, modify_time, 
+    status,quote_avatar_img,quote_create_date_time,readStatus
+  </sql>
+  <sql id="Blob_Column_List" >
+    reply_content,quote_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_bbs_reply
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="queryReplyListByArticleId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />,
+    <include refid="Blob_Column_List" />
+    from tbl_bbs_reply
+    where status = 1 and article_id = #{id,jdbcType=BIGINT} order by create_date_time asc
+  </select>
+  <select id="queryReplyListByArticleIds" resultMap="ResultMapWithBLOBs" parameterType="java.util.List" >
+    select 
+    <include refid="Base_Column_List" />,
+    <include refid="Blob_Column_List" />
+    from tbl_bbs_reply
+    where quote_id  is null and (readstatus is null or readstatus = 0) and article_id in
+    	<foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+  			#{item}
+  		</foreach>
+     order by create_date_time desc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_bbs_reply
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.ibaixiong.entity.BbsReply"  useGeneratedKeys="true" keyProperty="id">
+    insert into tbl_bbs_reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user != null" >
+        user_id,
+      </if>
+      <if test="article != null" >
+        article_id,
+      </if>
+      <if test="replyContent != null" >
+        reply_content,
+      </if>
+      <if test="quoteId != null" >
+        quote_id,
+      </if>
+      <if test="quoteContent != null" >
+        quote_content,
+      </if>
+      <if test="quoteUserNick != null" >
+        quote_user_nick,
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="quoteAvatarImg != null" >
+        quote_avatar_img,
+      </if>
+      <if test="quoteCreateDateTime != null" >
+        quote_create_date_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user != null" >
+        #{user.id,jdbcType=BIGINT},
+      </if>
+      <if test="article != null" >
+        #{article.id,jdbcType=BIGINT},
+      </if>
+      <if test="replyContent != null" >
+        #{replyContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="quoteId != null" >
+        #{quoteId,jdbcType=BIGINT},
+      </if>
+      <if test="quoteContent != null" >
+        #{quoteContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="quoteUserNick != null" >
+        #{quoteUserNick,jdbcType=VARCHAR},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="quoteAvatarImg != null" >
+        #{quoteAvatarImg,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteCreateDateTime != null" >
+        #{quoteCreateDateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ibaixiong.entity.BbsReply" >
+    update tbl_bbs_reply
+    <set >
+      <if test="user != null" >
+        user_id = #{user.id,jdbcType=BIGINT},
+      </if>
+      <if test="article != null" >
+        article_id = #{article.id,jdbcType=BIGINT},
+      </if>
+      <if test="replyContent != null" >
+        reply_content = #{replyContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="quoteId != null" >
+        quote_id = #{quoteId,jdbcType=BIGINT},
+      </if>
+      <if test="quoteContent != null" >
+        quote_content = #{quoteContent,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="quoteUserNick != null" >
+        quote_user_nick = #{quoteUserNick,jdbcType=VARCHAR},
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time = #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+       <if test="quoteAvatarImg != null" >
+        quote_avatar_img = #{quoteAvatarImg,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteCreateDateTime != null" >
+        quote_create_date_time = #{quoteCreateDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readStatus != null" >
+        readStatus = #{readStatus,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

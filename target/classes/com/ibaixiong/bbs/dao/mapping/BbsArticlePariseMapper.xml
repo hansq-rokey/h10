@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ibaixiong.bbs.dao.BbsArticlePariseDao" >
+  <resultMap id="BaseResultMap" type="com.ibaixiong.entity.BbsArticleParise" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP" />
+    <association column="user_id" property="user" select="com.ibaixiong.bbs.dao.UserDao.selectByPrimaryKey"/>
+  	<association column="article_id" property="article" select="com.ibaixiong.bbs.dao.BbsArticleDao.selectByPrimaryKey"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_date_time, article_id, user_id 
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_article_parise
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="queryPariseListByArticleId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_article_parise
+    where article_id = #{articleId,jdbcType=BIGINT}
+  </select>
+  <select id="checkPariseByArticleUser" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_bbs_article_parise
+    where article_id = #{articleId,jdbcType=BIGINT} and user_id=#{userId,jdbcType=BIGINT}
+  </select>
+  <insert id="insertSelective" parameterType="com.ibaixiong.entity.BbsArticleParise" useGeneratedKeys="true" keyProperty="id">
+    insert into tbl_bbs_article_parise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user != null" >
+        user_id,
+      </if>
+      <if test="article != null" >
+        article_id,
+      </if>
+      <if test="createDateTime != null" >
+        create_date_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user != null" >
+        #{user.id,jdbcType=BIGINT},
+      </if>
+      <if test="article != null" >
+        #{article.id,jdbcType=BIGINT},
+      </if>
+      <if test="createDateTime != null" >
+        #{createDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

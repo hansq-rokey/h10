@@ -1,0 +1,182 @@
+.content{
+    padding-bottom:20px;
+}
+.navlist{
+    margin-top:18px;
+    background:#fff;
+    height:60px;
+    overflow: hidden;
+    padding: 0;
+}
+.talknav{
+    display: inline-block;
+    padding:0px 10px;
+    height:60px;
+    line-height:60px;
+    cursor:pointer;
+}
+.talknav:hover{
+    color:#ff6200;
+    border-bottom:2px solid #ff6200;
+}
+.talknav.selectednav{
+    color:#ff6200;
+    border-bottom:2px solid #ff6200;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.navicon{
+    display: inline-block;
+    width: 20px;
+    height:20px;
+    float: left;
+    margin-top:21px;
+    background: url("http://fe.ibaixiong.com/bbs/image/bbsicon.png");
+}
+.zonghe{
+    background-position: -12px -212px;
+}
+.chanpin{
+    background-position: -51px -212px;
+}
+.taolun{
+    background-position: -92px -212px;
+}
+.shaiji{
+    background-position: -132px -212px;
+}
+.jiaocheng{
+    background-position: -171px -211px;
+}
+.zhineng{
+    background-position: -12px -252px;
+}
+.cllist{
+    margin-top:0px;
+}
+.cllist li div div div.tr{
+}
+.condrow{
+    background:#fff;
+    padding:0 20px;
+}
+.timelist,.sortlist{
+    height:40px;
+    margin-right:20px;
+    border:1px solid #f0f0f0;
+    width:100px;
+}
+.condition{
+    padding:0 10px;
+    line-height:40px;
+    height:40px;
+    color:#999;
+}
+.condition.selectedcond{
+    color:#ff6200;
+}
+.condition:hover{
+    color:#ff6200;
+}
+.iconlist{
+    display: inline-block;
+}
+.iconlist i.icon{
+    width: 20px;
+    margin-top:8px;
+}
+.cllist{
+    line-height:36px;
+}
+.personimg{
+    width: 38px;
+    height:38px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border:none;
+    margin-top:14px;
+}
+.cllist li{
+    margin-bottom:0;
+    border-bottom:1px solid #f0f0f0;
+    padding:10px 0;
+}
+.cllist li div.row{
+    padding:0;
+}
+.report{
+    display: none;
+}
+.cllist li:hover div div div div span.report{
+    display: inline-block;
+}
+.forum{
+    padding:0 15px;
+}
+.forum h3{
+    margin-left:0;
+    margin-right:0;
+}
+.forum div.smallsize{
+    padding:0;
+}
+.forum div.smallsize div{
+    text-align: left;
+    text-indent: 36px;
+    padding:0;
+}
+.forum,.recommend,.member{
+    padding-bottom: 20px;
+}
+.member div div.col-xs-3{
+    padding-right:0px;
+    width:50px;
+}
+.col-xs-1{
+    width: 74px;
+    padding-left:24px;
+    padding-right:12px;
+}
+.col-xs-11{
+    width: 813px;
+    padding:0;
+}
+.talktitle{
+    margin-top:9px;
+    display: inline-block;
+}
+.selectinput{
+    border:none;
+    width:92px;
+    padding-right:20px;
+    margin-left:0px;
+    margin-right:8px;
+}
+.option,.option li{
+    width: 100%;
+}
+.option{
+	padding:8px 0;
+}
+ .option li{
+	padding-left:12px;
+	height:26px;
+	line-height:26px;
+ }
+.option li:hover{
+    background: #f2f2f2;
+    color:#ff6200;
+}
+.condrow div.col-xs-6{
+    padding-left:0;
+    padding-right:0;
+}
+.last{
+    padding-right:8px;
+}
+#itemContainer{
+	min-height:462px;
+	background:#fff;
+}

@@ -1,0 +1,150 @@
+.iconlist{
+    position: relative;
+    padding:5px 10px;
+    float: right;
+}
+.arrow{
+    position:absolute;
+    right:0;
+    bottom: 10px;
+    background-image:url(http://fe.ibaixiong.com/bbs/image/bbsicon.png);
+    background-repeat: no-repeat;
+    margin-left:10px;
+    background-position: -58px -139px;
+    width: 7px;
+    height:7px;
+    display: inline-block;
+}
+.applydown{
+    position: absolute;
+    left:16px;
+    top:38px;
+    width: 81px;
+    height:40px;
+    display: none;
+}
+.apply:hover a .applydown{
+    display: block;
+}
+.popup{
+    height:100%;
+    position: fixed;
+    width: 100%;
+    top:0;
+    left:0;
+    display: none;
+    z-index: 1001;
+}
+.warnbg{
+    height:100%;
+    position: absolute;
+    width: 100%;
+    background:rgba(0,0,0,0.2);
+    background-color: #000;
+    opacity: 0.4;
+    filter:alpha(opacity=40);
+    top:0;
+    left:0;
+}
+.warnpop{
+    width: 510px;
+    height:300px;
+    background: #fff;
+    padding:0 15px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left:-255px;
+    margin-top:-150px;
+}
+.wt{
+    height:50px;
+    line-height:50px;
+    border-bottom:1px solid #dcdcdc;
+    text-indent: 1em;
+    color:#333;
+}
+.shareacon{
+    width: 40px;
+    height:35px;
+    display: inline-block;
+    float: left;
+    background: url("http://fe.ibaixiong.com/bbs/image/bbsicon.png");
+    background-repeat: no-repeat;
+    background-position: -73px -45px;
+}
+.wx{
+    background-position: -5px -45px;
+}
+.kj{
+    background-position: -45px -45px;
+}
+.qq{
+    background-position: -85px -45px;
+}
+.wb{
+    background-position: -125px -45px;
+}
+.wx:hover{
+    background-position: -5px -5px;
+}
+.kj:hover{
+    background-position: -45px -5px;
+}
+.qq:hover{
+    background-position: -85px -5px;
+}
+.wb:hover{
+    background-position: -125px -5px;
+}
+.fx{
+    width: 80px;
+    background-image: none;
+    line-height: 35px;
+}
+.warnimg{
+    margin: 20px 50px;
+}
+.warntext{
+    width: 300px;
+}
+.warntext a{
+    color: #32a5e7;
+}
+.fr{
+    float: right;
+}
+.close{
+    width: 18px;
+    height:18px;
+    display: inline-block;
+    float: right;
+    background: url("http://fe.ibaixiong.com/bbs/image/icon.png") no-repeat -2px -142px;
+    margin-top:15px;
+    right:15px;
+}
+.succtext{
+    padding:10px 70px;
+}
+.read{
+    position: relative;
+}
+.sharebox{
+    height:162px;
+    background:url("http://fe.ibaixiong.com/bbs/image/sharebg.png") top left no-repeat;
+    position:absolute;
+    left:75px;
+    top:-55px;
+    padding-left:10px;
+    padding-top:3px;
+    border-right:1px solid #d9d9d9;
+    z-index: 888;
+    display: none;
+}
+.read:hover .sharebox{
+    display: block;
+}
+.read a span.shareacon{
+    float: none;
+    display: block;
+}

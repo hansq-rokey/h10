@@ -1,0 +1,219 @@
+body{
+    text-align: center;
+    background: #fff;
+}
+input[type=text]{
+    padding-left:15px;
+}
+.login-header{
+    width:100%;
+    overflow: hidden;
+    height:160px;
+    text-align: center;
+}
+.logo{
+    width: 220px;
+    height:133px;
+    margin-right:830px;
+}
+.form-control{
+    width: 328px;
+    height:48px;
+    border:1px solid #e0e0e0;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    float: left;
+    margin-left:3px;
+}
+.login-content{
+    width: 990px;
+    overflow: hidden;
+    min-height:400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.infor-box{
+    width: 540px;
+    overflow: hidden;
+    float: left;
+}
+.login-ul{
+    width: 100%;
+    position: relative;
+    height:420px;
+    overflow: hidden;
+    padding-left:100px;
+}
+.login-ul li{
+    float: left;
+    display: inline-block;
+    width: 170px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+h4,h4 a{
+    font-weight: normal;
+    font-size:22px;
+    color:#999999;
+    cursor: pointer;
+}
+h4 a:hover,.login-ul li h4:hover{
+    text-decoration: none;
+    outline: none;
+}
+.right-box h4{
+    color:#333333;
+}
+.login-ul li h4.selected a,.login-ul li h4.selected{
+    color: #ff6200;
+}
+.line{
+    width: 1px;
+    background: #f2f2f2;
+    height: 20px;
+    float: left;
+    display: inline-block;
+    margin-top:12px;
+}
+.login-infor{
+    width: 340px;
+    position:absolute;
+    top:40px;
+    left:0;
+    overflow: hidden;
+    z-index: 999;
+    display: none;
+    margin:0 100px;
+}
+.current{
+    display: block;
+}
+.yzm-img{
+    margin-left:30px;
+    width:130px;
+    height:50px;
+    float: left;
+}
+.yzm{
+    width: 168px;
+    float: left;
+}
+.rem-item{
+    float: left;
+    display: block;
+    height:20px;
+    line-height:20px;
+}
+
+.login-btn,.register-btn,.reset-btn{
+    width:340px;
+    height:50px;
+    background:#ff5600;
+    color:#fff;
+    border:none;
+    font-size:16px;
+    margin-bottom:5px;
+    cursor: pointer;
+}
+.current a.forget{
+     display: inline-block;
+     line-height: 20px;
+     float: right\9;
+     margin-right:5px;
+     color:#666;
+ }
+.current a.forget:hover{
+    color:#ff6200;
+}
+.yzm-input{
+    width: 230px;
+    float: left;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right:0;
+}
+.yzm-btn{
+    height:48px;
+    width:98px;
+    float: right;
+    border:1px solid #e0e0e0;
+    color:#999;
+    background:none;
+    outline:medium;
+    margin:0;
+    margin-right:9px;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+}
+.footor{
+    text-align: center;
+    font-size:12px;
+    height:130px;
+    width: 100%;
+    border-top:1px solid #f2f2f2;
+    padding-top:40px;
+}
+.footor a{
+    display: inline-block;
+    padding:5px;
+}
+.right-box{
+    width: 450px;
+    float: right;
+    background-image: url("http://fe.ibaixiong.com/bbs/image/loginbg.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    text-align:center;
+    margin-top:40px;
+    min-height:310px;
+}
+.qq-btn{
+    margin-top:40px;
+    display: inline-block;
+}
+.wx-btn{
+    margin-top:20px;
+    display: inline-block;
+}
+/*找回密码*/
+.find-infor{
+    width: 340px;
+    overflow: hidden;
+    margin:0 325px;
+}
+.find-infor div.row{
+    padding:7px 0
+}
+.find-title{
+    color:#333;
+    margin-bottom:20px;
+}
+.login-header,.login-header a{
+    color:#999;
+}
+.row{
+	margin:0;
+}
+.remember{
+    vertical-align:text-top;
+    margin-top:0;
+    height:14px;
+}
+input[type=checkbox].remember{
+    margin-top:0;
+    margin-right:5px;
+}
+.qq-img:hover,.wx-img:hover{
+    opacity: 0.9;
+}
+.linebg{
+    background: url("http://fe.ibaixiong.com/bbs/image/linebg.png") left center repeat-x;
+    width: 260px;
+    margin:0 auto;
+}
+.linebg span{
+    background: #fff;
+    padding:0 15px;
+}
